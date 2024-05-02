@@ -3,11 +3,11 @@ import { getJobList } from "../api";
 export const FETCHJOBLIST = "FETCHJOBLIST";
 export const ISLOADING = "ISLOADING";
 
-export const fetchJobList = () => {
+export const fetchJobList = (offset) => {
   return async (dispatch) => {
     dispatch({ type: ISLOADING, payload: true });
     try {
-      const res = await getJobList();
+      const res = await getJobList(offset);
       const data = await res.json();
       console.log("data:", data);
       dispatch({ type: FETCHJOBLIST, payload: data.jdList });

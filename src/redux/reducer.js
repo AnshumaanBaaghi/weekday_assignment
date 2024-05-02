@@ -9,7 +9,7 @@ const initialState = {
 export const Reducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case FETCHJOBLIST:
-      return { ...state, jobList: payload };
+      return { ...state, jobList: [...state.jobList, ...payload] };
     case ISLOADING:
       return { ...state, isLoading: payload };
 
