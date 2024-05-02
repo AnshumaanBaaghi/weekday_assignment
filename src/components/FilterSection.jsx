@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { MultipleSelect } from "./MultipleSelect";
 import { Box } from "@mui/material";
+import { SingleSelect } from "./SingleSelect";
 const roleOptions = [
   { label: "Option 1" },
   { label: "Option 2" },
@@ -38,7 +39,7 @@ const RemoteOptions = [
 export const FilterSection = () => {
   const [selectedRoles, setSelectedRoles] = useState([]);
   const [selectedNoOfEmployees, setSelectedNoOfEmployees] = useState([]);
-  const [selectedExperience, setSelectedExperience] = useState("");
+  const [selectedExperience, setSelectedExperience] = useState(null);
   const [selectedRemote, setSelectedRemote] = useState([]);
   return (
     <Box
@@ -63,13 +64,13 @@ export const FilterSection = () => {
         placeholder="Number Of Employees"
         label="No Of Employees"
       />
-      {/* <MultipleSelect
+      <SingleSelect
         options={experienceOptions}
-        selectedOptions={selectedExperience}
-        setSelectedOptions={setSelectedExperience}
+        selectedOption={selectedExperience}
+        setSelectedOption={setSelectedExperience}
         placeholder="Experience"
         label="Experience"
-      /> */}
+      />
       <MultipleSelect
         options={RemoteOptions}
         selectedOptions={selectedRemote}
