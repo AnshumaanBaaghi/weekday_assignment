@@ -1,0 +1,25 @@
+.about-company {
+  height: 250px;
+  overflow: hidden;
+  mask-image: linear-gradient(
+    rgb(255, 255, 255),
+    rgb(255, 255, 255),
+    rgba(255, 255, 255, 0)
+  );
+}
+.about-company > p {
+  font-size: 1rem;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.about-company .subHead {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.about-company .content {
+  font-size: 14px;
+  font-weight: 100;
+  color: rgb(77, 89, 106);
+}
