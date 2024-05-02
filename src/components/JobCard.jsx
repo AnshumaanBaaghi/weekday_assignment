@@ -31,7 +31,7 @@ const StyledImage = styled("img")({
   height: "2.5rem",
 });
 
-export const JobCard = ({ referal, el }) => {
+export const JobCard = ({ handleOpenModal, referal, el }) => {
   return (
     <Box sx={{ padding: "24px 8px", marginTop: "8px" }}>
       <BodyDiv>
@@ -131,6 +131,7 @@ export const JobCard = ({ referal, el }) => {
                 fontSize: "14px",
                 fontWeight: 400,
               }}
+              onClick={handleOpenModal}
             >
               View More
             </Typography>

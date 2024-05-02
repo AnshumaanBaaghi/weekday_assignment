@@ -3,7 +3,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchJobList } from "../redux/actions";
 import { FilterSection } from "../components/FilterSection";
 import { JobCard } from "../components/JobCard";
-import { Box, CircularProgress } from "@mui/material";
+import { Box, CircularProgress, Modal, Typography } from "@mui/material";
+
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 400,
+  bgcolor: "background.paper",
+  border: "2px solid #000",
+  boxShadow: 24,
+  p: 4,
+};
+
 export const JobList = () => {
   const jobListArr = useSelector((state) => state.jobList);
   console.log("jobListArr:", jobListArr);
@@ -21,6 +34,10 @@ export const JobList = () => {
   const [selectedRemote, setSelectedRemote] = useState([]);
   const [selectedMinSalary, setSelectedMinSalary] = useState(null);
   const [query, setQuery] = useState("");
+
+  const [openModal, setOpenModal] = React.useState(false);
+  const handleOpenModal = () => setOpenModal(true);
+  const handleCloseModal = () => setOpenModal(false);
 
   const handleScroll = () => {
     const entireDocumentHeight = document.documentElement.scrollHeight;
@@ -133,7 +150,12 @@ export const JobList = () => {
       <div className="jobList">
         {jobListArr?.length > 0 &&
           filterArray(jobListArr).map((el, i) => (
-            <JobCard key={i} el={el} referal={i % 5 == 1} /> // Randomly passing referal for showing referal button
+            <JobCard
+              handleOpenModal={handleOpenModal}
+              key={i}
+              el={el}
+              referal={i % 5 == 1}
+            /> // Randomly passing referal for showing referal button
           ))}
       </div>
       {isLoading && (
@@ -147,6 +169,21 @@ export const JobList = () => {
           <CircularProgress />
         </Box>
       )}
+      <Modal
+        open={openModal}
+        onClose={handleCloseModal}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Text in a modal
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+          </Typography>
+        </Box>
+      </Modal>
     </div>
   );
 };
