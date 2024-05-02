@@ -159,7 +159,7 @@ export const JobCard = ({ referal, el }) => {
                 color: "rgba(0, 0, 0, 0.87)",
               }}
             >
-              {el.minExp || 2} years
+              {el.minExp || 1} years
             </Typography>
           </Box>
         </Box>

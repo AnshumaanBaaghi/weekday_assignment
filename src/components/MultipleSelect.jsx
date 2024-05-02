@@ -12,7 +12,6 @@ export const MultipleSelect = ({
 }) => {
   const [inputValue, setInputValue] = React.useState("");
   const [optionsFiltered, setOptionsFiltered] = React.useState(options);
-  console.log("selectedOptions:", selectedOptions);
 
   const handleInputChange = (event) => {
     const query = event.target.value;

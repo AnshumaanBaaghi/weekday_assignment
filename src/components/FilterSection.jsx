@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { MultipleSelect } from "./MultipleSelect";
-import { Box } from "@mui/material";
+import { Box, TextField } from "@mui/material";
 import { SingleSelect } from "./SingleSelect";
 const roleOptions = [
-  { label: "Option 1" },
-  { label: "Option 2" },
-  { label: "Option 3" },
-  { label: "Option 4" },
-  { label: "Option 5" },
+  { label: "frontend" },
+  { label: "ios" },
+  { label: "android" },
+  { label: "tech lead" },
+  { label: "backend" },
 ];
 const noOfEmployeesOptions = [
   { label: "1-10", min: 1, max: 10 },
@@ -30,17 +30,37 @@ const experienceOptions = [
   { label: "9" },
   { label: "10" },
 ];
-const RemoteOptions = [
+const remoteOptions = [
   { label: "Remote" },
   { label: "Hybrid" },
   { label: "In-Office" },
   ,
 ];
-export const FilterSection = () => {
-  const [selectedRoles, setSelectedRoles] = useState([]);
-  const [selectedNoOfEmployees, setSelectedNoOfEmployees] = useState([]);
-  const [selectedExperience, setSelectedExperience] = useState(null);
-  const [selectedRemote, setSelectedRemote] = useState([]);
+const minSalaryOptions = [
+  { label: "0L" },
+  { label: "10L" },
+  { label: "20L" },
+  { label: "30L" },
+  { label: "40L" },
+  { label: "50L" },
+  { label: "60L" },
+  { label: "70L" },
+  ,
+];
+export const FilterSection = ({
+  selectedRoles,
+  setSelectedRoles,
+  selectedNoOfEmployees,
+  setSelectedNoOfEmployees,
+  selectedExperience,
+  setSelectedExperience,
+  selectedRemote,
+  setSelectedRemote,
+  selectedMinSalary,
+  setSelectedMinSalary,
+  query,
+  setQuery,
+}) => {
   return (
     <Box
       sx={{
@@ -72,11 +92,24 @@ export const FilterSection = () => {
         label="Experience"
       />
       <MultipleSelect
-        options={RemoteOptions}
+        options={remoteOptions}
         selectedOptions={selectedRemote}
         setSelectedOptions={setSelectedRemote}
         placeholder="Remote"
         label="Remote"
+      />
+      <SingleSelect
+        options={minSalaryOptions}
+        selectedOption={selectedMinSalary}
+        setSelectedOption={setSelectedMinSalary}
+        placeholder="Minimum Base Pay Salary"
+        label="Min Base Pay"
+      />
+      <TextField
+        variant="outlined"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        placeholder="Search Company Name"
       />
     </Box>
   );
