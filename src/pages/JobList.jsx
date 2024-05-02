@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchJobList } from "../redux/actions";
 import { FilterSection } from "../components/FilterSection";
 import { JobCard } from "../components/JobCard";
+import { Box, CircularProgress } from "@mui/material";
 export const JobList = () => {
   const jobListArr = useSelector((state) => state.jobList);
   console.log("jobListArr:", jobListArr);
@@ -135,7 +136,17 @@ export const JobList = () => {
             <JobCard key={i} el={el} referal={i % 5 == 1} /> // Randomly passing referal for showing referal button
           ))}
       </div>
-      {isLoading && <>Loading...</>}
+      {isLoading && (
+        <Box
+          sx={{
+            display: "flex",
+            margin: "20px 0x 40px",
+            justifyContent: "center",
+          }}
+        >
+          <CircularProgress />
+        </Box>
+      )}
     </div>
   );
 };
