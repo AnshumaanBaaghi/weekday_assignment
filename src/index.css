@@ -29,3 +29,12 @@ p {
   justify-content: space-between;
   padding: 24px;
 }
+
+.multipleSelect-chip {
+  border-radius: 5px !important;
+  margin-left: 4px !important;
+}
+
+.multipleSelect-chip svg:hover {
+  color: rgb(243, 145, 145) !important;
+}
