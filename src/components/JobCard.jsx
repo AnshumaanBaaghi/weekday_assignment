@@ -1,6 +1,8 @@
 import React from "react";
 import "../style/JobCard.css";
 import { Box, Button, Paper, Typography, styled } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { updateJobDetails } from "../redux/actions";
 
 const StyledPaper = styled(Paper)(() => ({
   padding: "4px 6px",
@@ -32,6 +34,12 @@ const StyledImage = styled("img")({
 });
 
 export const JobCard = ({ handleOpenModal, referal, el }) => {
+  const dispatch = useDispatch();
+
+  const handleClick = () => {
+    dispatch(updateJobDetails(el));
+    handleOpenModal();
+  };
   return (
     <Box sx={{ padding: "24px 8px", marginTop: "8px" }}>
       <BodyDiv>
@@ -131,7 +139,7 @@ export const JobCard = ({ handleOpenModal, referal, el }) => {
                 fontSize: "14px",
                 fontWeight: 400,
               }}
-              onClick={handleOpenModal}
+              onClick={handleClick}
             >
               View More
             </Typography>

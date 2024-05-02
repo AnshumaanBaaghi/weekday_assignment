@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { MultipleSelect } from "./MultipleSelect";
 import { Box, TextField } from "@mui/material";
 import { SingleSelect } from "./SingleSelect";
@@ -68,6 +68,7 @@ export const FilterSection = ({
         flexWrap: "wrap",
         gap: "10px",
         alignItems: "end",
+        padding: "24px",
       }}
     >
       <MultipleSelect

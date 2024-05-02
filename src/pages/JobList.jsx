@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchJobList } from "../redux/actions";
 import { FilterSection } from "../components/FilterSection";
 import { JobCard } from "../components/JobCard";
-import { Box, CircularProgress, Modal, Typography } from "@mui/material";
+import { Box, CircularProgress, Modal } from "@mui/material";
 
 const style = {
   position: "absolute",
@@ -12,16 +12,20 @@ const style = {
   transform: "translate(-50%, -50%)",
   width: 400,
   bgcolor: "background.paper",
-  border: "2px solid #000",
   boxShadow: 24,
   p: 4,
+  maxHeight: "60vh",
+  overflow: "hidden",
+  overflowY: "scroll",
+  borderRadius: "10px",
+  border: "none",
 };
 
 export const JobList = () => {
   const jobListArr = useSelector((state) => state.jobList);
-  console.log("jobListArr:", jobListArr);
   const isLoading = useSelector((state) => state.isLoading);
   const totalOffset = useSelector((state) => state.totalOffset);
+  const jobDetails = useSelector((state) => state.jobDetails);
   const dispatch = useDispatch();
 
   const totalOffsetRef = useRef(null);
@@ -175,13 +179,30 @@ export const JobList = () => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
+        <Box sx={style} className="modalScrollbox">
+          <p>About Company:</p>
+          <Box>
+            <p
+              style={{
+                fontSize: "14px",
+                fontWeight: 500,
+                lineHeight: "1.5",
+                margin: "5px 0px",
+              }}
+            >
+              About us
+            </p>
+            <p
+              style={{
+                fontSize: "14px",
+                fontWeight: 100,
+                lineHeight: "1.5",
+                color: "rgb(77, 89, 106)",
+              }}
+            >
+              {jobDetails.jobDetailsFromCompany}
+            </p>
+          </Box>
         </Box>
       </Modal>
     </div>

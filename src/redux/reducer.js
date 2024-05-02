@@ -1,4 +1,9 @@
-import { FETCHJOBLIST, ISLOADING, UPDATEOFFSET } from "./actions";
+import {
+  FETCHJOBLIST,
+  ISLOADING,
+  UPDATEJOBDETAILS,
+  UPDATEOFFSET,
+} from "./actions";
 
 const initialState = {
   isLoading: false,
@@ -15,6 +20,8 @@ export const Reducer = (state = initialState, { type, payload }) => {
       return { ...state, isLoading: payload };
     case UPDATEOFFSET:
       return { ...state, totalOffset: payload };
+    case UPDATEJOBDETAILS:
+      return { ...state, jobDetails: payload };
 
     default:
       return state;
