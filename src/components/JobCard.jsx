@@ -31,7 +31,7 @@ const StyledImage = styled("img")({
   height: "2.5rem",
 });
 
-export const JobCard = ({ referal }) => {
+export const JobCard = ({ referal, el }) => {
   return (
     <Box sx={{ padding: "24px 8px", marginTop: "8px" }}>
       <BodyDiv>
@@ -46,7 +46,7 @@ export const JobCard = ({ referal }) => {
                 fontSize: 9,
               }}
             >
-              ⏳ Posted 13 days ago
+              ⏳ Posted {`13 days`} ago
             </Typography>
           </StyledPaper>
         </Box>
@@ -70,7 +70,7 @@ export const JobCard = ({ referal }) => {
                     color: "#8b8b8b",
                   }}
                 >
-                  fampay
+                  {el.companyName || "fampay"}
                 </Typography>
                 <Typography
                   variant="h2"
@@ -81,14 +81,14 @@ export const JobCard = ({ referal }) => {
                     fontWeight: "lighter",
                   }}
                 >
-                  Backend Engineer
+                  {el.jobRole || "Frontend"}
                 </Typography>
               </Box>
               <Typography
                 variant="body2"
                 sx={{ fontSize: "11px", fontWeight: 500, marginTop: "5px" }}
               >
-                Bangalore
+                {el.location || "Bangalore"}
               </Typography>
             </Box>
           </Box>
@@ -101,40 +101,16 @@ export const JobCard = ({ referal }) => {
               color: "rgb(77, 89, 106)",
             }}
           >
-            Estimated Salary: ₹18 - 35 LPA <span> ✅</span>
+            Estimated Salary: ₹{el.minJdSalary || 0} - {el.maxJdSalary || 5} LPA{" "}
+            <span> ✅</span>
           </Typography>
 
           <Box className="about-company">
             <p>About Company:</p>
             <Box>
+              {/*  Will Render this Box based on Sub-headings */}
               <p className="subHead">About us</p>
-              <p className="content">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Fugiat, vitae. Perspiciatis expedita assumenda corrupti
-                corporis, quia harum ut numquam sit saepe cumque eius ipsam,
-                dolores voluptatem. Fugiat labore, voluptatum itaque corporis
-                delectus obcaecati amet exercitationem. Totam recusandae
-                repellendus dolorem perspiciatis quaerat excepturi ullam. Culpa
-                corrupti minus ad dicta quod facilis illum ducimus aliquam amet
-                modi nam nobis vel, corporis, optio molestias illo quidem
-                dignissimos, distinctio ut inventore esse magnam est laudantium!
-                Ad rem aliquid qui nulla adipisci repellendus laudantium
-                mollitia eum quibusdam. Hic adipisci harum temporibus. Quasi, ex
-                deserunt officia eius natus numquam non mollitia fuga. Placeat
-                dolorem a esse quaerat delectus cumque perferendis? Quo atque
-                illum nisi exercitationem, optio ex expedita minus dignissimos
-                provident, quisquam harum numquam reprehenderit quos voluptatem
-                dolor quas. Nulla dolore nihil unde doloribus quis possimus in,
-                eos veritatis, excepturi distinctio quisquam omnis, quam porro
-                nam labore ipsum dolor illo perspiciatis deleniti repellendus?
-                Dolores non porro commodi exercitationem illo architecto autem
-                at ipsa doloremque expedita voluptas, nulla consequuntur itaque
-                ipsum repellat nesciunt, ducimus quisquam eius maiores
-                provident, voluptatibus tempore fugit. Obcaecati officia
-                temporibus illum repellat, corrupti illo quasi voluptatem quod
-                ea harum tenetur expedita, magnam iste quos nostrum soluta ullam
-                laborum animi earum nihil dolorem ad?
-              </p>
+              <p className="content">{el.jobDetailsFromCompany}</p>
             </Box>
           </Box>
           <Box
@@ -183,7 +159,7 @@ export const JobCard = ({ referal }) => {
                 color: "rgba(0, 0, 0, 0.87)",
               }}
             >
-              2 years
+              {el.minExp || 2} years
             </Typography>
           </Box>
         </Box>
